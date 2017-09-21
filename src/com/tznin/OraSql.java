@@ -24,7 +24,10 @@ public class OraSql extends   BaseSql {
                     //System.out.println(line + line.contains("CREATE") );
                     if(line.contains("CREATE TABLE") ) {
                            start = true;
-                           String tableName = StringUtils.substringBetween(line,".\"","\"");
+                   //        String tableName = StringUtils.substringBetween(line,".\"","\"");
+
+                        String tableName = StringUtils.substringAfterLast(line,".").trim();
+
                            //System.out.println(line);
                         data = new SqlData();
                         data.setTableName(tableName.toLowerCase());
@@ -38,7 +41,11 @@ public class OraSql extends   BaseSql {
                     } else
 
                     if(start) {
-                        String filed = StringUtils.substringBetween(line,"\"","\"");
+                       // String filed = StringUtils.substringBetween(line,"\"","\"");
+                        String[] lines = StringUtils.split(line," ");
+
+                        String filed = lines[0].trim();
+
                         data.addFiled(filed.toLowerCase() );
                         System.out.println("========"+filed.toLowerCase());
 
@@ -54,7 +61,7 @@ public class OraSql extends   BaseSql {
 
     public static  void main(String[] na) {
         OraSql ora = new OraSql();
-        ora.load("/Users/zxmoa/Documents/workspace/TSTEST.sql");
+        ora.load("wwww.sql");
         ora.sql2data();
         System.out.println( ora.getDatas() );
 

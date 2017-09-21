@@ -12,12 +12,12 @@ public class OraSqlTest {
 
     public static  void main(String[] na) {
         OraSql ora = new OraSql();
-        ora.load("/Users/zxmoa/Documents/workspace/TSTEST.sql");
+        ora.load("wwww.SQL");
         ora.sql2data();
         //System.out.println( ora.getDatas() );
 
-        MSSql ms = new MSSql();
-        ms.load("/Users/zxmoa/Documents/workspace/mssql.sql");
+        OraSql ms = new OraSql();
+        ms.load("wwww2.SQL");
         ms.sql2data();
         //System.out.println( ms.getDatas() );
 
